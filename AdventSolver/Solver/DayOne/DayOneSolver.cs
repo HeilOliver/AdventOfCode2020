@@ -8,18 +8,20 @@ using AdventSolver.Solver.DayFour;
 namespace AdventSolver.Solver.DayOne
 {
     [AdventSolverAttribute(1)]
-    public class DayOneSolver : IAdventSolver
+    public class DayOneSolver : SolverBase, IAdventSolver
     {
         private const int NumberToMatch = 2020;
 
-        private static IEnumerable<int> CreateExpenses()
+        public DayOneSolver() : base("Data\\Day1.txt")
         {
-            var lines = File.ReadAllLines($"Data\\Day1.txt");
+        }
 
-            foreach (string line in lines)
-            {
-                yield return int.Parse(line);
-            }
+        private IEnumerable<int> CreateExpenses()
+        {
+            var dataInput = GetDataInput();
+            return dataInput
+                .Select(int.Parse)
+                .AsEnumerable();
         }
 
         public void Solve()
@@ -59,6 +61,5 @@ namespace AdventSolver.Solver.DayOne
 
             return -1;
         }
-
     }
 }

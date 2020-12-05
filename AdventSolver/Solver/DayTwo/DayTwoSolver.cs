@@ -6,15 +6,18 @@ using System.Linq;
 namespace AdventSolver.Solver.DayTwo
 {
     [AdventSolverAttribute(2)]
-    public class DayTwoSolver : IAdventSolver
+    public class DayTwoSolver : SolverBase, IAdventSolver
     {
-        private static IEnumerable<Password> CreateExpenses()
+        public DayTwoSolver() : base("Data\\Day2.txt")
         {
-            var lines = File.ReadAllLines($"Data\\Day2.txt");
-            foreach (string line in lines)
-            {
-                yield return new Password(line);
-            }
+        }
+
+        private IEnumerable<Password> CreateExpenses()
+        {
+            var dataInput = GetDataInput();
+            return dataInput
+                .Select(line => new Password(line))
+                .AsEnumerable();
         }
 
         public void Solve()

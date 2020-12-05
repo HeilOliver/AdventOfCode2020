@@ -7,12 +7,15 @@ using System.Text;
 namespace AdventSolver.Solver.DayFour
 {
     [AdventSolverAttribute(4)]
-    public class DayFourSolver : IAdventSolver
+    public class DayFourSolver : SolverBase, IAdventSolver
     {
+        public DayFourSolver() : base("Data\\Day4.txt")
+        {
+        }
+
         private IEnumerable<Passport> CreatePassports()
         {
-            var lines = File.ReadAllLines($"Data\\Day4.txt");
-
+            var lines = GetDataInput();
             StringBuilder currentBatch = new StringBuilder();
 
             foreach (string line in lines)

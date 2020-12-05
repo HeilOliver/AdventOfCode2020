@@ -7,17 +7,16 @@ using AdventSolver.Util;
 namespace AdventSolver.Solver.DayThree
 {
     [AdventSolverAttribute(3)]
-    public class DayThreeSolver : IAdventSolver
+    public class DayThreeSolver : SolverBase, IAdventSolver
     {
-        private static IEnumerable<string> CreateExpenses()
+
+        public DayThreeSolver() : base("Data\\Day3.txt")
         {
-            var lines = File.ReadAllLines($"Data\\Day3.txt");
-            return lines;
         }
 
         public void Solve()
         {
-            var expenses = CreateExpenses()
+            var expenses = GetDataInput()
                 .ToArray();
 
             int hitTrees = CalculateHitTrees(expenses, 3,1);

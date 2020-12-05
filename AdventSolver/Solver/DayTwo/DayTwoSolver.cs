@@ -12,7 +12,7 @@ namespace AdventSolver.Solver.DayTwo
         {
         }
 
-        private IEnumerable<Password> CreateExpenses()
+        private IEnumerable<Password> CreatePasswords()
         {
             var dataInput = GetDataInput();
             return dataInput
@@ -22,7 +22,7 @@ namespace AdventSolver.Solver.DayTwo
 
         public void Solve()
         {
-            var passwords = CreateExpenses().ToList();
+            var passwords = CreatePasswords().ToList();
 
             int validPasswords = passwords.Count(password => password.IsForRentalPlaceValid());
             Console.WriteLine($"{validPasswords} are valid passwords for the sled rental place");

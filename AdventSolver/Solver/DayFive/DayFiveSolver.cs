@@ -5,7 +5,7 @@ using AdventSolver.Solver.DayTwo;
 
 namespace AdventSolver.Solver.DayFive
 {
-    [AdventSolverAttribute(5)]
+    [AdventSolver(5)]
     public class DayFiveSolver : SolverBase, IAdventSolver
     {
         public DayFiveSolver() : base("Data\\Day5.txt")

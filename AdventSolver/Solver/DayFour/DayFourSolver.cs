@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdventSolver.Solver.DayFour
 {
-    [AdventSolverAttribute(4)]
+    [AdventSolver(4)]
     public class DayFourSolver : SolverBase, IAdventSolver
     {
         public DayFourSolver() : base("Data\\Day4.txt")

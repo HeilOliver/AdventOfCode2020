@@ -6,7 +6,7 @@ using AdventSolver.Util;
 
 namespace AdventSolver.Solver.DayThree
 {
-    [AdventSolverAttribute(3)]
+    [AdventSolver(3)]
     public class DayThreeSolver : SolverBase, IAdventSolver
     {
 

@@ -7,7 +7,7 @@ using AdventSolver.Solver.DayFour;
 
 namespace AdventSolver.Solver.DayOne
 {
-    [AdventSolverAttribute(1)]
+    [AdventSolver(1)]
     public class DayOneSolver : SolverBase, IAdventSolver
     {
         private const int NumberToMatch = 2020;

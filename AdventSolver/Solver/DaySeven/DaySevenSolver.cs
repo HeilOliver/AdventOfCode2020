@@ -5,7 +5,7 @@ using AdventSolver.Solver.DaySix;
 
 namespace AdventSolver.Solver.DaySeven
 {
-    [AdventSolverAttribute(7)]
+    [AdventSolver(7)]
     public class DaySevenSolver : SolverBase, IAdventSolver
     {
         private const string BagColor = "shiny gold";

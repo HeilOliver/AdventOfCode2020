@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using AdventSolver.Solver.DaySix;
+using System.Linq;using AdventSolver.Solver.DaySix;
 
 namespace AdventSolver.Solver.DaySeven
 {
@@ -38,6 +37,7 @@ namespace AdventSolver.Solver.DaySeven
             var shinyGoldBag = bags
                 .First(e => e.ColorCode.Equals(BagColor));
             int totalAmount = AmountOfInsertedBags(bags, shinyGoldBag);
+            totalAmount -= 1; // We dont need our shiny gold bag
 
             Console.WriteLine($"{totalAmount} Bags are in the {BagColor} bag");
         }

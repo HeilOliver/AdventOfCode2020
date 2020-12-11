@@ -26,9 +26,7 @@
             if (Instruction == Instruction.Acc)
                 return;
 
-            Instruction = Instruction == Instruction.Jmp ?
-                Instruction.Nop :
-                Instruction.Jmp;
+            Instruction = Instruction == Instruction.Jmp ? Instruction.Nop : Instruction.Jmp;
         }
 
         public override string ToString()

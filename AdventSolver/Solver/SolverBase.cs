@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using AdventSolver.Solver.DayTwo;
 
 namespace AdventSolver.Solver
 {
@@ -17,12 +16,9 @@ namespace AdventSolver.Solver
         {
             if (!File.Exists(DataFileName))
                 yield break;
-            
+
             var lines = File.ReadAllLines(DataFileName);
-            foreach (string line in lines)
-            {
-                yield return line;
-            }
+            foreach (string line in lines) yield return line;
         }
     }
 }

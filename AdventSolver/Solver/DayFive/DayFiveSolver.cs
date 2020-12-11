@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdventSolver.Solver.DayTwo;
 
 namespace AdventSolver.Solver.DayFive
 {
@@ -10,14 +9,6 @@ namespace AdventSolver.Solver.DayFive
     {
         public DayFiveSolver() : base("Data\\Day5.txt")
         {
-        }
-
-        private IEnumerable<BoardingCard> CreateBoardingCards()
-        {
-            var dataInput = GetDataInput();
-            return dataInput
-                .Select(line => new BoardingCard(line))
-                .AsEnumerable();
         }
 
         public void Solve()
@@ -35,13 +26,21 @@ namespace AdventSolver.Solver.DayFive
             Console.WriteLine($"{missingSeatId} is my Seat id");
         }
 
+        private IEnumerable<BoardingCard> CreateBoardingCards()
+        {
+            var dataInput = GetDataInput();
+            return dataInput
+                .Select(line => new BoardingCard(line))
+                .AsEnumerable();
+        }
+
         private int FindMissingSeatId(IReadOnlyList<BoardingCard> boardingCards)
         {
             var cards = boardingCards
                 .Where(card => card.Row > 0)
                 .Where(card => card.Row < 127)
                 .GroupBy(card => card.Row)
-                .First(group => group.Count<BoardingCard>() != 8);
+                .First(group => group.Count() != 8);
 
             var columns = cards
                 .OrderBy(card => card.Column)

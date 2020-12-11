@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace AdventSolver.Solver.DayEight
@@ -10,16 +9,6 @@ namespace AdventSolver.Solver.DayEight
     {
         public DayEightSolver() : base("Data\\Day8.txt")
         {
-        }
-
-        private IEnumerable<CodeLine> GetLines()
-        {
-            var lines = GetDataInput();
-            int lineNumber = 0;
-            foreach (string line in lines)
-            {
-                yield return new CodeLine(line, lineNumber++);
-            }
         }
 
         public void Solve()
@@ -32,6 +21,13 @@ namespace AdventSolver.Solver.DayEight
 
             int programOutput = AutoDebugTool(codeLines);
             Console.WriteLine($"{programOutput} is the accumulator output after fix");
+        }
+
+        private IEnumerable<CodeLine> GetLines()
+        {
+            var lines = GetDataInput();
+            int lineNumber = 0;
+            foreach (string line in lines) yield return new CodeLine(line, lineNumber++);
         }
 
         private static int AutoDebugTool(IReadOnlyList<CodeLine> code)

@@ -10,6 +10,6 @@ namespace AdventSolver.Solver
             DayToSolve = dayToSolve;
         }
 
-        public int DayToSolve { get;}
+        public int DayToSolve { get; }
     }
 }

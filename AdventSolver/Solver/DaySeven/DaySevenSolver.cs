@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;using AdventSolver.Solver.DaySix;
+using System.Linq;
 
 namespace AdventSolver.Solver.DaySeven
 {
@@ -11,16 +11,6 @@ namespace AdventSolver.Solver.DaySeven
 
         public DaySevenSolver() : base("Data\\Day7.txt")
         {
-        }
-
-        private IEnumerable<Bag> GetBags()
-        {
-            var lines = GetDataInput();
-         
-            foreach (string line in lines)
-            {
-                yield return new Bag(line);
-            }
         }
 
         public void Solve()
@@ -42,6 +32,13 @@ namespace AdventSolver.Solver.DaySeven
             Console.WriteLine($"{totalAmount} Bags are in the {BagColor} bag");
         }
 
+        private IEnumerable<Bag> GetBags()
+        {
+            var lines = GetDataInput();
+
+            foreach (string line in lines) yield return new Bag(line);
+        }
+
         private static int AmountOfInsertedBags(HashSet<Bag> bags, Bag bag)
         {
             int count = 1;
@@ -55,7 +52,8 @@ namespace AdventSolver.Solver.DaySeven
             return count;
         }
 
-        private static bool ContainsColorCode(Bag currentBag, ISet<Bag> bags, string searchedColor, ISet<string> alreadySeen = null)
+        private static bool ContainsColorCode(Bag currentBag, ISet<Bag> bags, string searchedColor,
+            ISet<string> alreadySeen = null)
         {
             alreadySeen ??= new HashSet<string>();
             if (alreadySeen.Contains(currentBag.ColorCode))

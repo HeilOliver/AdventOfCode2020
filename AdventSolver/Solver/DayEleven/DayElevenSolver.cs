@@ -11,12 +11,18 @@ namespace AdventSolver.Solver.DayEleven
         {
         }
 
+        public void Solve()
+        {
+            SolvePartOne();
+            SolvePartTwo();
+        }
+
         private IEnumerable<Seat> GetSeats()
         {
             var lines = GetDataInput()
                 .ToList();
 
-            Seat[,] places = new Seat[lines.Count, lines.First().Length];
+            var places = new Seat[lines.Count, lines.First().Length];
             for (int i = 0; i < places.GetLength(0); i++)
             {
                 string line = lines[i];
@@ -26,12 +32,6 @@ namespace AdventSolver.Solver.DayEleven
                     yield return places[i, j];
                 }
             }
-        }
-
-        public void Solve()
-        {
-            SolvePartOne();
-            SolvePartTwo();
         }
 
         private void SolvePartOne()

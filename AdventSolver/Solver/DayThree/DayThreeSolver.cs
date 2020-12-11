@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using AdventSolver.Util;
 
@@ -9,7 +8,6 @@ namespace AdventSolver.Solver.DayThree
     [AdventSolver(3)]
     public class DayThreeSolver : SolverBase, IAdventSolver
     {
-
         public DayThreeSolver() : base("Data\\Day3.txt")
         {
         }
@@ -19,7 +17,7 @@ namespace AdventSolver.Solver.DayThree
             var expenses = GetDataInput()
                 .ToArray();
 
-            int hitTrees = CalculateHitTrees(expenses, 3,1);
+            int hitTrees = CalculateHitTrees(expenses, 3, 1);
             Console.WriteLine($"{hitTrees} Trees are hit when you go 3 right and 1 down");
 
             long hitTreesMultiply = CalculateHitTreeSum(expenses);
@@ -34,7 +32,7 @@ namespace AdventSolver.Solver.DayThree
                 CalculateHitTrees(map, 3, 1),
                 CalculateHitTrees(map, 5, 1),
                 CalculateHitTrees(map, 7, 1),
-                CalculateHitTrees(map, 1, 2),
+                CalculateHitTrees(map, 1, 2)
             };
 
             return values.Multiply();

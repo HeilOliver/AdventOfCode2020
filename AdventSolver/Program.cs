@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using AdventSolver.Solver;
-using AdventSolver.Solver.DayFour;
 
 namespace AdventSolver
 {
@@ -27,6 +26,7 @@ namespace AdventSolver
                 solver.Instance.Solve();
                 Console.WriteLine("-------------------------------------");
             }
+
             stopwatch.Stop();
             Console.WriteLine($"Run for {stopwatch.ElapsedMilliseconds}");
         }
@@ -44,7 +44,7 @@ namespace AdventSolver
             internal AdventSolverAttribute Attribute { get; }
 
             internal IAdventSolver Instance => IsSolver
-                ? (IAdventSolver)Activator
+                ? (IAdventSolver) Activator
                     .CreateInstance(solverType)
                 : null;
 

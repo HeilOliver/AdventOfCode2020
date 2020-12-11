@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AdventSolver.Solver.DaySix
 {
@@ -10,25 +9,6 @@ namespace AdventSolver.Solver.DaySix
     {
         public DaySixSolver() : base("Data\\Day6.txt")
         {
-        }
-
-        private IEnumerable<CustomDeclarationGroup> GetCustomDeclarationQuestionsPerGroup()
-        {
-            var lines = GetDataInput();
-            List<string> currentGroup = new List<string>();
-
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrEmpty(line))
-                {
-                    yield return new CustomDeclarationGroup(currentGroup);
-                    currentGroup = new List<string>();
-                    continue;
-                }
-                currentGroup.Add(line);
-            }
-
-            yield return new CustomDeclarationGroup(currentGroup);
         }
 
         public void Solve()
@@ -41,6 +21,26 @@ namespace AdventSolver.Solver.DaySix
 
             int intersectYes = questionsPerGroup.Sum(group => group.IntersectYesAnswers());
             Console.WriteLine($"{intersectYes} are all yes answers in a group answered by everyone");
+        }
+
+        private IEnumerable<CustomDeclarationGroup> GetCustomDeclarationQuestionsPerGroup()
+        {
+            var lines = GetDataInput();
+            var currentGroup = new List<string>();
+
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrEmpty(line))
+                {
+                    yield return new CustomDeclarationGroup(currentGroup);
+                    currentGroup = new List<string>();
+                    continue;
+                }
+
+                currentGroup.Add(line);
+            }
+
+            yield return new CustomDeclarationGroup(currentGroup);
         }
     }
 }

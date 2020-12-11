@@ -23,6 +23,5 @@ namespace AdventSolver.Util
 
             return multiply;
         }
-
     }
 }

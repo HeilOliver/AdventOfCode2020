@@ -2,9 +2,9 @@
 {
     public class Seat
     {
+        private readonly Seat[,] map;
         private readonly int posX;
         private readonly int posY;
-        private readonly Seat[,] map;
 
         private SeatPlacement nextState;
 
@@ -26,7 +26,14 @@
 
         public bool IsSatisfied { get; private set; }
 
+        public void Execute()
+        {
+            IsSatisfied = true;
+            State = nextState;
+        }
+
         #region Rule One
+
         public void CalculateRuleOne()
         {
             if (State == SeatPlacement.Floor)
@@ -113,8 +120,8 @@
             while (true)
             {
                 multi++;
-                int calcX = posX + (xInc * multi);
-                int calcY = posY + (yInc * multi);
+                int calcX = posX + xInc * multi;
+                int calcY = posY + yInc * multi;
 
                 if (calcX >= map.GetLength(1) || calcX < 0)
                     return false;
@@ -132,11 +139,5 @@
         }
 
         #endregion
-
-        public void Execute()
-        {
-            IsSatisfied = true;
-            State = nextState;
-        }
     }
 }

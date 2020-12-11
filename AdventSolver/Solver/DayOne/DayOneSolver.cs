@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using AdventSolver.Solver.DayFour;
 
 namespace AdventSolver.Solver.DayOne
 {
@@ -16,14 +13,6 @@ namespace AdventSolver.Solver.DayOne
         {
         }
 
-        private IEnumerable<int> CreateExpenses()
-        {
-            var dataInput = GetDataInput();
-            return dataInput
-                .Select(int.Parse)
-                .AsEnumerable();
-        }
-
         public void Solve()
         {
             var expenses = CreateExpenses()
@@ -34,6 +23,14 @@ namespace AdventSolver.Solver.DayOne
 
             expensiveSum = FindSum(expenses, 3);
             Console.WriteLine($"{expensiveSum} multiplied expensive with bound 3");
+        }
+
+        private IEnumerable<int> CreateExpenses()
+        {
+            var dataInput = GetDataInput();
+            return dataInput
+                .Select(int.Parse)
+                .AsEnumerable();
         }
 
         private static int FindSum(IReadOnlyList<int> items, int bound)

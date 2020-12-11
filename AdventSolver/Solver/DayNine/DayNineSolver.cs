@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdventSolver.Solver.DayEight;
 
 namespace AdventSolver.Solver.DayNine
 {
@@ -14,21 +13,12 @@ namespace AdventSolver.Solver.DayNine
         {
         }
 
-        private IEnumerable<long> GetLines()
-        {
-            var lines = GetDataInput();
-            foreach (string line in lines)
-            {
-                yield return long.Parse(line);
-            }
-        }
-
         public void Solve()
         {
             var codeLines = GetLines()
                 .ToList();
 
-            long? failedNumber = FindNotMatchingNumber(codeLines, Preamble);
+            var failedNumber = FindNotMatchingNumber(codeLines, Preamble);
             Console.WriteLine($"{failedNumber} is the first failed number");
 
             if (!failedNumber.HasValue)
@@ -37,10 +27,16 @@ namespace AdventSolver.Solver.DayNine
                 return;
             }
 
-            long? encryptionWeakness = FindEncryptionWeakness(codeLines, failedNumber.Value);
+            var encryptionWeakness = FindEncryptionWeakness(codeLines, failedNumber.Value);
             Console.WriteLine(encryptionWeakness.HasValue
                 ? $"{encryptionWeakness} is the encryption weakness"
                 : $"no encryption weakness for {failedNumber} found");
+        }
+
+        private IEnumerable<long> GetLines()
+        {
+            var lines = GetDataInput();
+            foreach (string line in lines) yield return long.Parse(line);
         }
 
         private static long? FindNotMatchingNumber(IReadOnlyList<long> input, int preamble)
@@ -48,7 +44,7 @@ namespace AdventSolver.Solver.DayNine
             for (int i = preamble; i < input.Count; i++)
             {
                 long toMatch = input[i];
-                
+
                 if (HasCombination(input, toMatch, i - preamble, preamble))
                     continue;
 
@@ -71,7 +67,7 @@ namespace AdventSolver.Solver.DayNine
                     if (sum > weakness)
                         break;
 
-                    if (sum != weakness) 
+                    if (sum != weakness)
                         continue;
 
                     long smallest = long.MaxValue;
@@ -96,15 +92,13 @@ namespace AdventSolver.Solver.DayNine
         private static bool HasCombination(IReadOnlyList<long> input, long value, int offset, int length)
         {
             for (int i = offset; i < offset + length - 1; i++)
+            for (int j = i + 1; j < offset + length; j++)
             {
-                for (int j = i + 1; j < offset + length; j++)
-                {
-                    long v1 = input[i];
-                    long v2 = input[j];
+                long v1 = input[i];
+                long v2 = input[j];
 
-                    if (v1 + v2 == value)
-                        return true;
-                }
+                if (v1 + v2 == value)
+                    return true;
             }
 
             return false;

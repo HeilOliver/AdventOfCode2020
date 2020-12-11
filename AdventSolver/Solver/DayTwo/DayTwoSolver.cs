@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace AdventSolver.Solver.DayTwo
@@ -12,14 +11,6 @@ namespace AdventSolver.Solver.DayTwo
         {
         }
 
-        private IEnumerable<Password> CreatePasswords()
-        {
-            var dataInput = GetDataInput();
-            return dataInput
-                .Select(line => new Password(line))
-                .AsEnumerable();
-        }
-
         public void Solve()
         {
             var passwords = CreatePasswords().ToList();
@@ -29,6 +20,14 @@ namespace AdventSolver.Solver.DayTwo
 
             validPasswords = passwords.Count(password => password.IsForCorporateValid());
             Console.WriteLine($"{validPasswords} are valid passwords for the Official Toboggan Corporate");
+        }
+
+        private IEnumerable<Password> CreatePasswords()
+        {
+            var dataInput = GetDataInput();
+            return dataInput
+                .Select(line => new Password(line))
+                .AsEnumerable();
         }
     }
 }

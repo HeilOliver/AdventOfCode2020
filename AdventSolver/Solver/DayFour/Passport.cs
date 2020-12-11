@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using AdventSolver.Util;
 
@@ -39,7 +38,7 @@ namespace AdventSolver.Solver.DayFour
             if (!IsConsistent())
                 return false;
 
-            var validValues = new bool[]
+            var validValues = new[]
             {
                 CheckBirth(),
                 CheckIssueYear(),

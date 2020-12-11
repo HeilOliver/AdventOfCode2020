@@ -4,16 +4,16 @@ namespace AdventSolver.Solver.DayTwo
 {
     public class Password
     {
-        private readonly string password;
-        private readonly int min;
         private readonly int max;
+        private readonly int min;
+        private readonly string password;
         private readonly char toMatch;
 
         public Password(string value)
         {
             var values = value.Split(": ");
             password = values[1];
-            toMatch = values[0][values[0].Length -1];
+            toMatch = values[0][values[0].Length - 1];
             var boundValues = values[0]
                 .Replace($" {toMatch}", "")
                 .Split("-");
@@ -30,7 +30,7 @@ namespace AdventSolver.Solver.DayTwo
 
         public bool IsForCorporateValid()
         {
-            return password[min - 1] == toMatch ^ password[max - 1] == toMatch;
+            return (password[min - 1] == toMatch) ^ (password[max - 1] == toMatch);
         }
     }
 }

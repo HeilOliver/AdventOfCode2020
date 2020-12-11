@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdventSolver.Util;
 
 namespace AdventSolver.Solver.DayTen
 {
@@ -12,15 +11,6 @@ namespace AdventSolver.Solver.DayTen
 
         public DayTenSolver() : base("Data\\Day10.txt")
         {
-        }
-
-        private IEnumerable<int> GetAdapter()
-        {
-            var lines = GetDataInput();
-            foreach (string line in lines)
-            {
-                yield return int.Parse(line);
-            }
         }
 
         public void Solve()
@@ -44,9 +34,15 @@ namespace AdventSolver.Solver.DayTen
             Console.WriteLine($"{combinations} combinations are Possible");
         }
 
+        private IEnumerable<int> GetAdapter()
+        {
+            var lines = GetDataInput();
+            foreach (string line in lines) yield return int.Parse(line);
+        }
+
         private static long CountCombinations(IReadOnlyList<int> data)
         {
-            long[] branchingFactors = new long[data.Count];
+            var branchingFactors = new long[data.Count];
             branchingFactors[0] = 1;
             for (int i = 0; i < data.Count; i++)
             {
@@ -69,10 +65,10 @@ namespace AdventSolver.Solver.DayTen
         private static int CountDistance(IReadOnlyList<int> data, int distance)
         {
             int count = 0;
-            for (int i = 0; i < data.Count- 1; i++)
+            for (int i = 0; i < data.Count - 1; i++)
             {
                 int adapter0 = data[i];
-                int adapter1 = data[i+1];
+                int adapter1 = data[i + 1];
 
                 if (adapter1 - adapter0 == distance)
                     count++;
@@ -80,6 +76,5 @@ namespace AdventSolver.Solver.DayTen
 
             return count;
         }
-
     }
 }

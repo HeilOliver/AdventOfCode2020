@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AdventSolver.Solver.Fourteen
+namespace AdventSolver.Solver.DayFourteen
 {
     [AdventSolver(14)]
     public class DayFourteenSolver : SolverBase, IAdventSolver

@@ -46,7 +46,7 @@ namespace AdventSolver.Solver.DayFourteen
                 {
                     if (!memoryVTwo.ContainsKey(address))
                         memoryVTwo.Add(address, 0);
-                    memoryVTwo[address] = result;
+                    memoryVTwo[address] = inputValue;
                 }
             }
 

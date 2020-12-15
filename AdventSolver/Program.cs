@@ -18,6 +18,12 @@ namespace AdventSolver
                 .OrderBy(solver => solver.Attribute.DayToSolve)
                 .ToList();
 
+            bool disableOther = solvers.Any(solver => solver.InDebug);
+            if (disableOther)
+                solvers = solvers
+                    .Where(solver => solver.InDebug)
+                    .ToList();
+
             foreach (var solver in solvers)
             {
                 int dayToSolve = solver.Attribute.DayToSolve;
@@ -49,6 +55,7 @@ namespace AdventSolver
                 : null;
 
             internal bool IsSolver => Attribute != null;
+            public bool InDebug => Attribute.InDebug;
         }
     }
 }

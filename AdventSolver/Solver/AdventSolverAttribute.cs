@@ -11,5 +11,6 @@ namespace AdventSolver.Solver
         }
 
         public int DayToSolve { get; }
+        public bool InDebug { get; set; }
     }
 }

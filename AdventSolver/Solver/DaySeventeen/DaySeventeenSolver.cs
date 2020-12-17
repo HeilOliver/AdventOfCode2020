@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.Linq;
-using AdventSolver.Solver.DaySixteen;
 using AdventSolver.Util;
 
 namespace AdventSolver.Solver.DaySeventeen
 {
-    [AdventSolver(17, InDebug = true)]
+    [AdventSolver(17)]
     public class DaySeventeenSolver : SolverBase, IAdventSolver
     {
         public DaySeventeenSolver() : base("Data\\Day17.txt")
@@ -16,20 +14,13 @@ namespace AdventSolver.Solver.DaySeventeen
 
         public void Solve()
         {
-            CubePosition flyLight = new CubePosition();
             var cubePositions = LoadData();
-            for (int i = 0; i < 6; i++)
-            {
-                cubePositions = DoCycles(cubePositions, flyLight, false);
-            }
+            for (int i = 0; i < 6; i++) cubePositions = DoCycles(cubePositions, false);
 
             Console.WriteLine($"{cubePositions.Count} cubes are active after six iterations with three dimensions");
 
             cubePositions = LoadData();
-            for (int i = 0; i < 6; i++)
-            {
-                cubePositions = DoCycles(cubePositions, flyLight, true);
-            }
+            for (int i = 0; i < 6; i++) cubePositions = DoCycles(cubePositions, true);
 
             Console.WriteLine($"{cubePositions.Count} cubes are active after six iterations with four dimensions");
         }
@@ -47,7 +38,7 @@ namespace AdventSolver.Solver.DaySeventeen
                     if (line[x] == '.')
                         continue;
 
-                    set.Add(new CubePosition()
+                    set.Add(new CubePosition
                     {
                         X = x,
                         Y = yPos,
@@ -61,12 +52,12 @@ namespace AdventSolver.Solver.DaySeventeen
             return set;
         }
 
-        private ICollection<CubePosition> DoCycles(ICollection<CubePosition> activeCubes, CubePosition flyLight,
+        private ICollection<CubePosition> DoCycles(ICollection<CubePosition> activeCubes,
             bool includeW)
         {
             ICollection<CubePosition> newState = new ConcurrentHashSet<CubePosition>();
             ICollection<CubePosition> mayActive = new ConcurrentHashSet<CubePosition>();
-            
+
             activeCubes.AsParallel().ForAll(currentCube =>
             {
                 int active = 0;
@@ -78,7 +69,7 @@ namespace AdventSolver.Solver.DaySeventeen
                     if (activeCubes.Contains(toCheckPos))
                         active++;
                     else
-                        mayActive.Add(new CubePosition()
+                        mayActive.Add(new CubePosition
                         {
                             X = toCheckPos.X,
                             Y = toCheckPos.Y,

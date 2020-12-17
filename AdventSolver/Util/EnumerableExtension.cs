@@ -29,16 +29,10 @@ namespace AdventSolver.Util
         {
             HashSet<T> hashSet = null;
             foreach (var list in lists)
-            {
                 if (hashSet == null)
-                {
                     hashSet = new HashSet<T>(list);
-                }
                 else
-                {
                     hashSet.IntersectWith(list);
-                }
-            }
             return hashSet == null ? new List<T>() : hashSet.AsEnumerable();
         }
     }

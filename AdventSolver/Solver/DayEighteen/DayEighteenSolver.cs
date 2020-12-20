@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace AdventSolver.Solver.DayEighteen
 {
-    [AdventSolver(18, InDebug = true)]
+    [AdventSolver(18)]
     public class DayEighteenSolver : SolverBase, IAdventSolver
     {
         public DayEighteenSolver() : base("Data\\Day18.txt")

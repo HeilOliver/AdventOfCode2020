@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventSolver.Util
@@ -23,6 +24,20 @@ namespace AdventSolver.Util
             }
 
             return multiply;
+        }
+
+        public static void AddRange<T>(this ISet<T> set, IEnumerable<T> toAdd)
+        {
+            foreach (var add in toAdd) 
+                set.Add(add);
+        }
+
+        public static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
+        {
+            foreach (T item in enumeration)
+            {
+                action(item);
+            }
         }
 
         public static IEnumerable<T> IntersectAll<T>(this IEnumerable<IEnumerable<T>> lists)

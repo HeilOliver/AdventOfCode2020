@@ -35,5 +35,18 @@ namespace AdventSolver.Util
                     hashSet.IntersectWith(list);
             return hashSet == null ? new List<T>() : hashSet.AsEnumerable();
         }
+
+        public static bool RemoveRange<T>(this HashSet<T> set, IEnumerable<T> toRemove)
+        {
+            bool allRemoved = true;
+            foreach (var remove in toRemove)
+            {
+                bool result = set.Remove(remove);
+                if (!result)
+                    allRemoved = false;
+            }
+
+            return allRemoved;
+        }
     }
 }

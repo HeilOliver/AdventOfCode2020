@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AdventSolver.Solver.DayTwentyTwo
 {
-    [AdventSolver(22, InDebug = true)]
+    [AdventSolver(22)]
     public class DayTwentyTwoSolver : SolverBase, IAdventSolver
     {
         public DayTwentyTwoSolver() : base("Data\\Day22.txt")
